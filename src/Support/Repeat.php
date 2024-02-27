@@ -31,6 +31,10 @@ class Repeat
         return new PendingEveryWeekRepeat($this->model);
     }
 
+    public function yearly(): PendingEveryNDaysRepeat{
+        return $this->everyNDays(365);
+    }
+
     public function complex(string $year = '*', string $month = '*', string $day = '*', string $week = '*', string $weekOfMonth = '*', string $weekday = '*'): PendingComplexRepeat
     {
         return (new PendingComplexRepeat($this->model))->rule($year, $month, $day, $week, $weekOfMonth, $weekday);
